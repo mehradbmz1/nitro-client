@@ -1,0 +1,48 @@
+# Binaries & packages
+*.exe
+*.apk
+*.zip
+*.keystore
+cloudflared.exe
+
+# Source code and development trees (Release distribution repository)
+.github/
+backend/
+mobile_app/
+nitro_vpn_windows/
+*.cs
+*.js
+*.ts
+*.py
+*.go
+*.ps1
+*.sh
+*.bat
+*.cmd
+*.vbs
+*.bin
+*.bin.z
+*.properties
+*.xml
+*.json
+*.txt
+
+# OS & Temp
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Build caches & tools
+node_modules/
+build_final/
+bin_nex/
+src_nex/
+preview/
+test_manifest/
+v2ray_base/
+META-INF/
+kotlin/
+docs/
+nex_android_app/
+staging_zip/
