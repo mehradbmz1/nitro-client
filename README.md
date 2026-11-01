@@ -7,15 +7,15 @@
 
 ---
 
-## Downloads
+## Downloads (Latest Release v2.3.0)
 
 Download the latest official binaries for your platform:
 
-| Platform | Package | Description | Download |
+| Platform | Package | Description | Direct Download |
 | :--- | :--- | :--- | :--- |
-| **Windows** | **Setup Wizard** (`.exe`) | Recommended installer with automatic firewall setup & TCP auto-tuning | [📥 Download Setup (.exe)](https://github.com/mehradbmz1/nitro-client/releases/latest/download/NitroVPN_Setup.exe) |
-| **Windows** | **Portable** (`.zip`) | Standalone portable archive — extract and run anywhere without installing | [📦 Download Portable (.zip)](https://github.com/mehradbmz1/nitro-client/releases/latest/download/NitroVPN_Windows.zip) |
-| **Android** | **Universal Package** (`.apk`) | Universal Android application package | [📱 Download APK](https://github.com/mehradbmz1/nitro-client/releases/latest/download/NitroVPN_Release.apk) |
+| **Windows** | **Setup Wizard** (`.exe`) | Recommended installer with automatic firewall setup & TCP auto-tuning | [📥 Download Setup v2.3.0 (.exe)](https://github.com/mehradbmz1/nitro-client/releases/download/v2.3.0/NitroVPN_Setup.exe) |
+| **Windows** | **Portable** (`.zip`) | Standalone portable archive — extract and run anywhere without installing | [📦 Download Portable v2.3.0 (.zip)](https://github.com/mehradbmz1/nitro-client/releases/download/v2.3.0/NitroVPN_Windows.zip) |
+| **Android** | **Universal Package** (`.apk`) | Universal Android application package (v2.3.0 Native Engine) | [📱 Download APK v2.3.0](https://github.com/mehradbmz1/nitro-client/releases/download/v2.3.0/NitroVPN_Release.apk) |
 
 ---
 
