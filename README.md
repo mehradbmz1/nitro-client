@@ -9,7 +9,7 @@
 
 ## Downloads (Latest Release v2.5.0)
 
-> **24/7 Web Mirror & Direct Downloads**: [https://nitro-client.mehradbarzeh5.workers.dev](https://nitro-client.mehradbarzeh5.workers.dev)
+> **24/7 Official Web Portal & High-Speed Downloads**: [https://nitro-client.pages.dev](https://nitro-client.pages.dev)
 
 Download the latest official binaries for your platform:
 
