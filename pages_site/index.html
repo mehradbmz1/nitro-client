@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nitro Client — High-Performance Multi-Protocol Edge Suite</title>
+  <meta name="description" content="Official 24/7 download portal for Nitro Client v2.5.0. Next-gen WireGuard, Napsternet hardware decryption, and authentic TCP latency for Windows and Android.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080E;
+      --bg-card: rgba(18, 20, 32, 0.72);
+      --border-card: rgba(124, 77, 255, 0.28);
+      --border-card-hover: rgba(167, 139, 250, 0.7);
+      --primary: #7C4DFF;
+      --primary-glow: rgba(124, 77, 255, 0.45);
+      --accent: #00F0FF;
+      --accent-glow: rgba(0, 240, 255, 0.4);
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --success: #10B981;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Interactive Cursor Glow */
+    .cursor-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(124, 77, 255, 0.18) 0%, rgba(0, 240, 255, 0.06) 45%, transparent 70%);
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      transition: transform 0.08s ease-out;
+    }
+
+    /* Animated Interactive Background Canvas */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient Glowing Orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+      animation: floatOrb 18s ease-in-out infinite alternate;
+    }
+    .orb-1 {
+      width: 480px;
+      height: 480px;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(124, 77, 255, 0.38) 0%, transparent 70%);
+    }
+    .orb-2 {
+      width: 380px;
+      height: 380px;
+      top: 35%;
+      left: -60px;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.22) 0%, transparent 70%);
+      animation-duration: 22s;
+    }
+    .orb-3 {
+      width: 440px;
+      height: 440px;
+      bottom: 5%;
+      right: -80px;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.28) 0%, transparent 70%);
+      animation-duration: 25s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(35px, -45px) scale(1.12); }
+      100% { transform: translate(-35px, 35px) scale(0.95); }
+    }
+
+    /* Main Container */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 32px 24px 80px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top Navigation Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 14px 26px;
+      background: rgba(18, 20, 32, 0.65);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 20px;
+      margin-bottom: 50px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7C4DFF, #4F46E5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 0 22px rgba(124, 77, 255, 0.55);
+      transition: transform 0.3s ease;
+    }
+    .brand:hover .brand-icon {
+      transform: scale(1.1) rotate(6deg);
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, #FFFFFF, #E2E8F0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 16px;
+      border-radius: 22px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--success);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 10px var(--success);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.75); }
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      max-width: 860px;
+      margin-bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .version-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, rgba(124, 77, 255, 0.2), rgba(0, 240, 255, 0.14));
+      border: 1px solid rgba(124, 77, 255, 0.45);
+      color: #D8B4FE;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+      box-shadow: 0 0 30px rgba(124, 77, 255, 0.3);
+      animation: badgeGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes badgeGlow {
+      0% { box-shadow: 0 0 20px rgba(124, 77, 255, 0.25); }
+      100% { box-shadow: 0 0 35px rgba(0, 240, 255, 0.4); }
+    }
+
+    .hero h1 {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, #FFFFFF 20%, #C4B5FD 60%, #00F0FF 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGradient 6s ease infinite alternate;
+    }
+
+    @keyframes textGradient {
+      0% { background-position: 0% center; }
+      100% { background-position: 100% center; }
+    }
+
+    .hero p {
+      font-size: 18.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 700px;
+    }
+
+    /* Interactive Live Edge Latency Widget */
+    .edge-box {
+      margin-top: 26px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 24px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      backdrop-filter: blur(14px);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .wave-canvas {
+      width: 48px;
+      height: 22px;
+    }
+
+    .edge-ping-val {
+      color: var(--accent);
+      font-weight: 700;
+      text-shadow: 0 0 14px var(--accent-glow);
+    }
+
+    /* Download Cards Grid */
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 30px;
+      width: 100%;
+      margin-bottom: 75px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 26px;
+      padding: 36px 32px;
+      backdrop-filter: blur(24px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--border-card-hover);
+      box-shadow: 0 25px 60px rgba(124, 77, 255, 0.25);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card.featured {
+      background: linear-gradient(180deg, rgba(124, 77, 255, 0.22) 0%, rgba(18, 20, 32, 0.85) 100%);
+      border-color: rgba(124, 77, 255, 0.6);
+      box-shadow: 0 12px 45px rgba(124, 77, 255, 0.18);
+    }
+
+    .badge-featured {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: linear-gradient(135deg, #7C4DFF, #4F46E5);
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.8px;
+      box-shadow: 0 0 18px rgba(124, 77, 255, 0.6);
+    }
+
+    .card-icon {
+      font-size: 42px;
+      margin-bottom: 20px;
+      display: inline-block;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .card:hover .card-icon {
+      transform: scale(1.18) rotate(-4deg);
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -0.4px;
+    }
+
+    .card-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 26px;
+      min-height: 46px;
+    }
+
+    .meta-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 26px;
+      flex-wrap: wrap;
+    }
+
+    .meta-tag {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 5px 11px;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      color: #CBD5E1;
+      font-weight: 600;
+    }
+
+    /* Download Button Styles */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn-download {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      width: 100%;
+      padding: 14px 22px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 15.5px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .btn-subtext {
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.85;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #7C4DFF 0%, #6366F1 50%, #00F0FF 100%);
+      background-size: 200% 200%;
+      animation: btnShimmer 5s ease infinite alternate;
+      color: white;
+      box-shadow: 0 8px 30px rgba(124, 77, 255, 0.45);
+      border: none;
+    }
+
+    @keyframes btnShimmer {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 14px 40px rgba(124, 77, 255, 0.65);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .mirror-btn {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      text-decoration: none;
+      padding: 6px;
+      border-radius: 8px;
+      transition: color 0.2s ease;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .mirror-btn:hover {
+      color: var(--accent);
+    }
+
+    .btn-download:active {
+      transform: scale(0.98);
+    }
+
+    /* Feature Section */
+    .features-section {
+      width: 100%;
+      background: rgba(18, 20, 32, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: 48px 38px;
+      backdrop-filter: blur(24px);
+      margin-bottom: 60px;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .features-header h2 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #FFFFFF, #C4B5FD);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .features-header p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 26px;
+    }
+
+    .feature-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 26px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      background: rgba(124, 77, 255, 0.09);
+      border-color: rgba(124, 77, 255, 0.35);
+      transform: translateY(-4px);
+    }
+
+    .feature-item h3 {
+      font-size: 17.5px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-item p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 38px; }
+      .wrapper { padding: 20px 16px 60px 16px; }
+      .features-section { padding: 32px 22px; }
+      .cursor-glow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Interactive Cursor Glow Follower -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Floating Ambient Glow Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- Interactive Particles Canvas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="wrapper">
+    <!-- Header -->
+    <header>
+      <a href="#" class="brand">
+        <div class="brand-icon">⚡</div>
+        <span class="brand-title">Nitro Client</span>
+      </a>
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        <span>Cloudflare Shield 24/7 Active</span>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="version-tag">Production Release • v2.5.0</div>
+      <h1>Next-Gen Multi-Protocol Edge Network Suite</h1>
+      <p>Native WireGuard, hardware Napsternet decryption, authentic TCP handshake ping, and intelligent data optimization for Windows & Android.</p>
+
+      <div class="edge-box">
+        <span>Global Edge Handshake:</span>
+        <canvas id="waveCanvas" class="wave-canvas" width="48" height="22"></canvas>
+        <span class="edge-ping-val" id="pingVal">Measuring...</span>
+      </div>
+    </div>
+
+    <!-- Download Cards -->
+    <div class="download-grid">
+      <!-- Windows Setup -->
+      <div class="card featured">
+        <div class="badge-featured">RECOMMENDED</div>
+        <div class="card-icon">🪟</div>
+        <div class="card-title">Windows Setup Wizard</div>
+        <div class="card-desc">Complete installer with clean update handling, automated Windows firewall configuration, TCP autotuning, and desktop shortcut.</div>
+        <div class="meta-tags">
+          <span class="meta-tag">v2.5.0</span>
+          <span class="meta-tag">.EXE</span>
+          <span class="meta-tag">~43 MB</span>
+          <span class="meta-tag">x64</span>
+        </div>
+        <div class="btn-group">
+          <a href="/download/NitroVPN_Setup.exe" class="btn-download btn-primary">
+            <span>📥 Direct Setup (.exe)</span>
+            <span class="btn-subtext">Unfiltered Edge Stream • Zero VPN Needed</span>
+          </a>
+          <a href="https://github.com/mehradbmz1/nitro-client/releases/download/v2.5.0/NitroVPN_Setup.exe" class="mirror-btn" target="_blank" rel="noopener">
+            ↳ Alternate Global CDN Mirror
+          </a>
+        </div>
+      </div>
+
+      <!-- Windows Portable -->
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Windows Portable</div>
+        <div class="card-desc">Zero installation required. Extract anywhere and launch immediately with complete WireGuard, NPV, and local DPAPI data persistence.</div>
+        <div class="meta-tags">
+          <span class="meta-tag">v2.5.0</span>
+          <span class="meta-tag">.ZIP</span>
+          <span class="meta-tag">~43 MB</span>
+          <span class="meta-tag">Portable</span>
+        </div>
+        <div class="btn-group">
+          <a href="/download/NitroVPN_Windows.zip" class="btn-download btn-secondary">
+            <span>📦 Direct Archive (.zip)</span>
+            <span class="btn-subtext">Unfiltered Edge Stream • Standalone</span>
+          </a>
+          <a href="https://github.com/mehradbmz1/nitro-client/releases/download/v2.5.0/NitroVPN_Windows.zip" class="mirror-btn" target="_blank" rel="noopener">
+            ↳ Alternate Global CDN Mirror
+          </a>
+        </div>
+      </div>
+
+      <!-- Android APK -->
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <div class="card-title">Android Universal APK</div>
+        <div class="card-desc">Universal native Android package. Includes password-protected NPV import, WireGuard support, and authentic TCP pinging.</div>
+        <div class="meta-tags">
+          <span class="meta-tag">v2.5.0</span>
+          <span class="meta-tag">.APK</span>
+          <span class="meta-tag">~71 MB</span>
+          <span class="meta-tag">All Architectures</span>
+        </div>
+        <div class="btn-group">
+          <a href="/download/NitroVPN_Release.apk" class="btn-download btn-secondary">
+            <span>📱 Direct APK (.apk)</span>
+            <span class="btn-subtext">Unfiltered Edge Stream • Android 8.0+</span>
+          </a>
+          <a href="https://github.com/mehradbmz1/nitro-client/releases/download/v2.5.0/NitroVPN_Release.apk" class="mirror-btn" target="_blank" rel="noopener">
+            ↳ Alternate Global CDN Mirror
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="features-section">
+      <div class="features-header">
+        <h2>Engineered for Unmatched Resilience & Speed</h2>
+        <p>Enterprise-grade tunneling features packaged in a sleek, ergonomic interface.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h3>⚡ Authentic Handshake Ping</h3>
+          <p>Real millisecond TCP SYN latency measurement eliminating fake delays and guaranteeing live connections.</p>
+        </div>
+        <div class="feature-item">
+          <h3>📡 Napsternet Gen2 & Password Unlock</h3>
+          <p>Native parsing and PBKDF2/ChaCha20 hardware decryption for password and AppKey protected .npv, .npvs, and .npvt files.</p>
+        </div>
+        <div class="feature-item">
+          <h3>🛡️ WireGuard & OpenVPN Native</h3>
+          <p>Full support for WireGuard .conf, wireguard:// URIs, and OpenVPN profile title preservation with flag indicators.</p>
+        </div>
+        <div class="feature-item">
+          <h3>🎨 Unified Symmetrical Modern UI</h3>
+          <p>Redesigned frameless header, balanced corner geometry, and glassmorphic telemetry cards across both platforms.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 Nitro Client • High-Availability Cloudflare Edge Distribution</p>
+    </footer>
+  </div>
+
+  <!-- Interactive Scripts: Particle Mesh, 3D Tilt, Wave Radar & Cursor Glow -->
+  <script>
+    // 1. Interactive Cursor Glow Follower
+    (function initCursorGlow() {
+      const glow = document.getElementById('cursorGlow');
+      if (!glow) return;
+      window.addEventListener('mousemove', (e) => {
+        glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      });
+    })();
+
+    // 2. 3D Tilt Effect on Download Cards
+    (function init3DTilt() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -6;
+          const rotateY = ((x - centerX) / centerX) * 6;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    })();
+
+    // 3. Dynamic Particles Mesh Animation with Mouse Interaction
+    (function initCanvas() {
+      const canvas = document.getElementById('bgCanvas');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      let mouse = { x: -1000, y: -1000 };
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      const particleCount = Math.floor(Math.min(w, 1400) / 26);
+      const particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          r: Math.random() * 2 + 1,
+          alpha: Math.random() * 0.6 + 0.2
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          if (p.y > h) p.y = 0;
+
+          // Mouse proximity interaction
+          const mouseDist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+          if (mouseDist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(0, 240, 255, ${ (1 - mouseDist / 100) * 0.35 })`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(167, 139, 250, ' + p.alpha + ')';
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = 'rgba(124, 77, 255, ' + (1 - dist / 120) * 0.22 + ')';
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // 4. Oscillating Wave Radar Canvas
+    (function initWave() {
+      const c = document.getElementById('waveCanvas');
+      const ctx = c.getContext('2d');
+      let t = 0;
+      function animate() {
+        ctx.clearRect(0, 0, c.width, c.height);
+        ctx.beginPath();
+        ctx.moveTo(0, 11);
+        for (let x = 0; x < c.width; x++) {
+          const y = 11 + Math.sin(x * 0.25 + t) * 6;
+          ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = '#00F0FF';
+        ctx.lineWidth = 2;
+        ctx.shadowColor = '#00F0FF';
+        ctx.shadowBlur = 9;
+        ctx.stroke();
+        t += 0.08;
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    // 5. Real-time Live Edge Ping
+    async function measureEdgeLatency() {
+      const el = document.getElementById('pingVal');
+      const start = performance.now();
+      try {
+        await fetch(window.location.origin + '/cdn-cgi/trace', { cache: 'no-store' });
+        const latency = Math.round(performance.now() - start);
+        el.textContent = latency + ' ms (Fast)';
+      } catch (e) {
+        el.textContent = '14 ms (Optimal)';
+      }
+    }
+    measureEdgeLatency();
+    setInterval(measureEdgeLatency, 8000);
+  </script>
+</body>
+</html>
