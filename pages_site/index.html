@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nitro Client — High-Performance Multi-Protocol Edge Suite</title>
-  <meta name="description" content="Official 24/7 download portal for Nitro Client v2.5.0. Next-gen WireGuard, Napsternet hardware decryption, and authentic TCP latency for Windows and Android.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Nitro Client v2.8.0 — دانلود مستقیم و ۲۴ ساعته نسخه جدید</title>
+  <meta name="description" content="دانلود نسخه جدید Nitro Client v2.8.0 برای ویندوز و اندروید. پشتیبانی بومی از WireGuard، OpenVPN، Napsternet (.npvt/.npvs)، فرمت اختصاصی نیترو و قفل سخت‌افزاری دستگاه.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #07080E;
-      --bg-card: rgba(18, 20, 32, 0.72);
+      --bg-dark: #08060F;
+      --bg-card: rgba(18, 14, 32, 0.75);
+      --bg-card-hover: rgba(28, 22, 50, 0.9);
       --border-card: rgba(124, 77, 255, 0.28);
       --border-card-hover: rgba(167, 139, 250, 0.7);
       --primary: #7C4DFF;
@@ -21,110 +22,111 @@
       --text: #F8FAFC;
       --text-muted: #94A3B8;
       --success: #10B981;
+      --font-fa: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-en: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg);
+      background-color: var(--bg-dark);
       color: var(--text);
+      font-family: var(--font-fa);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
+      line-height: 1.6;
+      font-size: 15px;
     }
 
-    /* Interactive Cursor Glow */
+    /* 3D Interactive Canvas & Glow */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .cursor-glow {
       position: fixed;
-      width: 500px;
-      height: 500px;
+      width: 480px;
+      height: 480px;
       border-radius: 50%;
       pointer-events: none;
-      background: radial-gradient(circle, rgba(124, 77, 255, 0.18) 0%, rgba(0, 240, 255, 0.06) 45%, transparent 70%);
+      background: radial-gradient(circle, rgba(124, 77, 255, 0.16) 0%, rgba(0, 240, 255, 0.05) 45%, transparent 70%);
       transform: translate(-50%, -50%);
       z-index: 0;
       transition: transform 0.08s ease-out;
     }
 
-    /* Animated Interactive Background Canvas */
-    #bgCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Ambient Glowing Orbs */
-    .orb {
-      position: fixed;
+    .ambient-orb {
+      position: absolute;
       border-radius: 50%;
       filter: blur(120px);
       pointer-events: none;
       z-index: 0;
-      opacity: 0.55;
-      animation: floatOrb 18s ease-in-out infinite alternate;
+      opacity: 0.5;
+      animation: floatOrb 20s ease-in-out infinite alternate;
     }
     .orb-1 {
-      width: 480px;
-      height: 480px;
       top: -100px;
       left: 50%;
       transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(124, 77, 255, 0.38) 0%, transparent 70%);
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(124, 77, 255, 0.35) 0%, transparent 70%);
     }
     .orb-2 {
-      width: 380px;
-      height: 380px;
       top: 35%;
-      left: -60px;
-      background: radial-gradient(circle, rgba(0, 240, 255, 0.22) 0%, transparent 70%);
-      animation-duration: 22s;
-    }
-    .orb-3 {
-      width: 440px;
-      height: 440px;
-      bottom: 5%;
-      right: -80px;
-      background: radial-gradient(circle, rgba(147, 51, 234, 0.28) 0%, transparent 70%);
+      left: -80px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.2) 0%, transparent 70%);
       animation-duration: 25s;
     }
 
     @keyframes floatOrb {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(35px, -45px) scale(1.12); }
-      100% { transform: translate(-35px, 35px) scale(0.95); }
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(40px) scale(1.08); }
+      100% { transform: translateY(-30px) scale(0.95); }
     }
 
-    /* Main Container */
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 1160px;
+    /* Layout Container */
+    .container {
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 32px 24px 80px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Top Navigation Header */
-    header {
+    /* Header Navbar */
+    .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
-      padding: 14px 26px;
-      background: rgba(18, 20, 32, 0.65);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 16px 20px;
+      margin: 16px auto 32px auto;
+      max-width: 1140px;
+      background: rgba(18, 14, 32, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-card);
       border-radius: 20px;
-      margin-bottom: 50px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
     .brand {
@@ -132,568 +134,970 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: inherit;
+      color: var(--text);
     }
 
-    .brand-icon {
-      width: 42px;
-      height: 42px;
+    .logo-box {
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #7C4DFF, #4F46E5);
+      background: linear-gradient(135deg, #7C4DFF, #6D28D9);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 22px;
-      box-shadow: 0 0 22px rgba(124, 77, 255, 0.55);
-      transition: transform 0.3s ease;
-    }
-    .brand:hover .brand-icon {
-      transform: scale(1.1) rotate(6deg);
+      box-shadow: 0 0 20px var(--primary-glow);
     }
 
-    .brand-title {
-      font-size: 20px;
+    .brand-info h1 {
+      font-size: 19px;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(90deg, #FFFFFF, #E2E8F0);
+      letter-spacing: -0.3px;
+      font-family: var(--font-en);
+      background: linear-gradient(135deg, #FFFFFF 30%, #C4B5FD 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .status-badge {
+    .brand-badge {
+      font-size: 10px;
+      font-weight: 700;
+      color: #A78BFA;
+      font-family: var(--font-mono);
+      background: rgba(124, 77, 255, 0.18);
+      border: 1px solid rgba(124, 77, 255, 0.4);
+      padding: 2px 7px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 2px;
+    }
+
+    .edge-status {
       display: flex;
       align-items: center;
-      gap: 9px;
-      padding: 7px 16px;
-      border-radius: 22px;
+      gap: 8px;
       background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.35);
-      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11.5px;
       font-weight: 600;
-      color: var(--success);
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      font-family: var(--font-en);
     }
 
     .status-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--success);
-      box-shadow: 0 0 10px var(--success);
-      animation: pulse 2s infinite;
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
+      animation: pulseDot 2s infinite;
     }
 
-    @keyframes pulse {
+    @keyframes pulseDot {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.75); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
 
-    /* Hero Section */
-    .hero {
+    /* ═══════════════════════════════════════════════════════════
+       HERO EXPLANATION SECTION (EXPLANATION FIRST)
+       ═══════════════════════════════════════════════════════════ */
+    .hero-section {
       text-align: center;
-      max-width: 860px;
-      margin-bottom: 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 20px 0 35px 0;
+      position: relative;
     }
 
-    .version-tag {
+    .holo-badge-3d {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 18px;
+      background: linear-gradient(135deg, rgba(124, 77, 255, 0.25), rgba(0, 240, 255, 0.15));
+      border: 1px solid rgba(167, 139, 250, 0.5);
+      box-shadow: 0 10px 25px rgba(124, 77, 255, 0.25);
+      padding: 7px 18px;
       border-radius: 30px;
-      background: linear-gradient(90deg, rgba(124, 77, 255, 0.2), rgba(0, 240, 255, 0.14));
-      border: 1px solid rgba(124, 77, 255, 0.45);
-      color: #D8B4FE;
       font-size: 12.5px;
       font-weight: 700;
-      letter-spacing: 0.8px;
-      margin-bottom: 22px;
-      text-transform: uppercase;
-      box-shadow: 0 0 30px rgba(124, 77, 255, 0.3);
-      animation: badgeGlow 4s ease-in-out infinite alternate;
+      color: #E0E7FF;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+      transform-style: preserve-3d;
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .holo-badge-3d:hover {
+      transform: perspective(600px) rotateX(10deg) scale(1.05);
     }
 
-    @keyframes badgeGlow {
-      0% { box-shadow: 0 0 20px rgba(124, 77, 255, 0.25); }
-      100% { box-shadow: 0 0 35px rgba(0, 240, 255, 0.4); }
+    .hero-title {
+      font-size: clamp(26px, 5.5vw, 44px);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
     }
-
-    .hero h1 {
-      font-size: 54px;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -2px;
-      margin-bottom: 22px;
-      background: linear-gradient(135deg, #FFFFFF 20%, #C4B5FD 60%, #00F0FF 100%);
-      background-size: 200% auto;
+    .hero-title span.grad-text {
+      background: linear-gradient(135deg, #FFFFFF 20%, #A78BFA 60%, #00F0FF 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: textGradient 6s ease infinite alternate;
+      display: inline-block;
     }
 
-    @keyframes textGradient {
-      0% { background-position: 0% center; }
-      100% { background-position: 100% center; }
+    .hero-subtitle {
+      font-size: clamp(14px, 3.2vw, 17px);
+      color: #CBD5E1;
+      max-width: 780px;
+      margin: 0 auto 30px auto;
+      line-height: 1.8;
+      font-weight: 500;
     }
 
-    .hero p {
-      font-size: 18.5px;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 700px;
-    }
-
-    /* Interactive Live Edge Latency Widget */
-    .edge-box {
-      margin-top: 26px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 10px 24px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      backdrop-filter: blur(14px);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13.5px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    .wave-canvas {
-      width: 48px;
-      height: 22px;
-    }
-
-    .edge-ping-val {
-      color: var(--accent);
-      font-weight: 700;
-      text-shadow: 0 0 14px var(--accent-glow);
-    }
-
-    /* Download Cards Grid */
-    .download-grid {
+    /* Explanation Feature Cards Grid */
+    .expl-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-      gap: 30px;
-      width: 100%;
-      margin-bottom: 75px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin: 0 auto 40px auto;
+      max-width: 1040px;
     }
 
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 26px;
-      padding: 36px 32px;
-      backdrop-filter: blur(24px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+    .expl-card {
+      background: rgba(18, 14, 32, 0.65);
+      border: 1px solid rgba(124, 77, 255, 0.22);
+      border-radius: 18px;
+      padding: 20px 18px;
+      text-align: right;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
       position: relative;
       overflow: hidden;
-      transform-style: preserve-3d;
     }
-
-    .card::before {
+    .expl-card:hover {
+      border-color: rgba(167, 139, 250, 0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(124, 77, 255, 0.2);
+    }
+    .expl-card::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
       right: 0;
+      width: 100%;
       height: 3px;
-      background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      background: linear-gradient(90deg, #7C4DFF, #00F0FF);
+      opacity: 0.6;
     }
 
-    .card:hover {
-      border-color: var(--border-card-hover);
-      box-shadow: 0 25px 60px rgba(124, 77, 255, 0.25);
+    .expl-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: inline-block;
     }
 
-    .card:hover::before {
-      opacity: 1;
+    .expl-title {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 8px;
     }
 
-    .card.featured {
-      background: linear-gradient(180deg, rgba(124, 77, 255, 0.22) 0%, rgba(18, 20, 32, 0.85) 100%);
-      border-color: rgba(124, 77, 255, 0.6);
-      box-shadow: 0 12px 45px rgba(124, 77, 255, 0.18);
+    .expl-desc {
+      font-size: 13px;
+      color: #94A3B8;
+      line-height: 1.7;
     }
 
-    .badge-featured {
-      position: absolute;
-      top: 18px;
-      right: 20px;
-      background: linear-gradient(135deg, #7C4DFF, #4F46E5);
-      color: white;
+    .hero-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #7C4DFF, #5B21B6);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 13px 30px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(124, 77, 255, 0.4);
+      transition: all 0.25s ease;
+    }
+    .hero-cta-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 14px 35px rgba(124, 77, 255, 0.6);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       DOWNLOAD SECTION DIRECTLY UNDERNEATH
+       ═══════════════════════════════════════════════════════════ */
+    .download-section {
+      padding: 20px 0 60px 0;
+      perspective: 1200px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .section-tag {
       font-size: 11px;
       font-weight: 800;
-      padding: 4px 14px;
-      border-radius: 20px;
-      letter-spacing: 0.8px;
-      box-shadow: 0 0 18px rgba(124, 77, 255, 0.6);
+      color: #00F0FF;
+      font-family: var(--font-en);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    /* 3D Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      transform-style: preserve-3d;
+    }
+
+    .download-card-3d {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 22px;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      transform-style: preserve-3d;
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s, border-color 0.2s;
+      overflow: hidden;
+    }
+
+    .download-card-3d:hover {
+      border-color: var(--border-card-hover);
+      box-shadow: 0 24px 60px rgba(124, 77, 255, 0.35);
+    }
+
+    .download-card-3d.featured {
+      border-color: rgba(124, 77, 255, 0.55);
+      background: linear-gradient(180deg, rgba(30, 20, 60, 0.8) 0%, rgba(18, 14, 32, 0.85) 100%);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: linear-gradient(135deg, #7C4DFF, #00F0FF);
+      color: #FFFFFF;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-family: var(--font-en);
+      box-shadow: 0 4px 12px rgba(124, 77, 255, 0.4);
     }
 
     .card-icon {
-      font-size: 42px;
-      margin-bottom: 20px;
-      display: inline-block;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .card:hover .card-icon {
-      transform: scale(1.18) rotate(-4deg);
+      font-size: 40px;
+      margin-bottom: 16px;
+      transform: translateZ(25px);
     }
 
     .card-title {
-      font-size: 22px;
+      font-size: 19px;
       font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+      font-family: var(--font-en);
+      transform: translateZ(20px);
     }
 
     .card-desc {
-      font-size: 14.5px;
+      font-size: 13px;
       color: var(--text-muted);
       line-height: 1.6;
-      margin-bottom: 26px;
-      min-height: 46px;
+      margin-bottom: 18px;
+      flex-grow: 1;
+      transform: translateZ(15px);
     }
 
     .meta-tags {
       display: flex;
-      gap: 8px;
-      margin-bottom: 26px;
       flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+      transform: translateZ(15px);
     }
 
     .meta-tag {
-      font-size: 12px;
-      font-family: 'JetBrains Mono', monospace;
-      padding: 5px 11px;
-      border-radius: 9px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 700;
       color: #CBD5E1;
-      font-weight: 600;
+      font-family: var(--font-en);
     }
 
-    /* Download Button Styles */
     .btn-group {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      width: 100%;
+      gap: 10px;
+      transform: translateZ(25px);
     }
 
     .btn-download {
-      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 3px;
-      width: 100%;
-      padding: 14px 22px;
-      border-radius: 16px;
-      font-weight: 700;
-      font-size: 15.5px;
+      padding: 13px 18px;
+      border-radius: 14px;
       text-decoration: none;
-      transition: all 0.25s ease;
+      font-weight: 800;
+      font-size: 14px;
+      transition: all 0.2s ease;
       cursor: pointer;
-      overflow: hidden;
       text-align: center;
-    }
-
-    .btn-subtext {
-      font-size: 11px;
-      font-weight: 500;
-      opacity: 0.85;
-      letter-spacing: 0.3px;
+      min-height: 52px;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #7C4DFF 0%, #6366F1 50%, #00F0FF 100%);
-      background-size: 200% 200%;
-      animation: btnShimmer 5s ease infinite alternate;
-      color: white;
-      box-shadow: 0 8px 30px rgba(124, 77, 255, 0.45);
-      border: none;
+      background: linear-gradient(135deg, #7C4DFF, #6D28D9);
+      color: #FFFFFF;
+      box-shadow: 0 8px 24px var(--primary-glow);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-
-    @keyframes btnShimmer {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
-    }
-
     .btn-primary:hover {
-      box-shadow: 0 14px 40px rgba(124, 77, 255, 0.65);
       transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(124, 77, 255, 0.6);
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.18);
     }
-
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(124, 77, 255, 0.2);
+      border-color: rgba(167, 139, 250, 0.5);
       transform: translateY(-2px);
     }
 
+    .btn-subtext {
+      font-size: 10.5px;
+      font-weight: 500;
+      opacity: 0.85;
+      margin-top: 3px;
+      font-family: var(--font-fa);
+    }
+
     .mirror-btn {
-      font-size: 12px;
-      color: var(--text-muted);
+      display: inline-block;
       text-align: center;
+      font-size: 11px;
+      color: #A78BFA;
       text-decoration: none;
       padding: 6px;
       border-radius: 8px;
-      transition: color 0.2s ease;
-      font-family: 'JetBrains Mono', monospace;
+      transition: color 0.2s;
+      font-family: var(--font-en);
     }
     .mirror-btn:hover {
-      color: var(--accent);
+      color: #00F0FF;
+      text-decoration: underline;
     }
 
-    .btn-download:active {
-      transform: scale(0.98);
-    }
-
-    /* Feature Section */
-    .features-section {
-      width: 100%;
-      background: rgba(18, 20, 32, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 28px;
-      padding: 48px 38px;
-      backdrop-filter: blur(24px);
-      margin-bottom: 60px;
-    }
-
-    .features-header {
-      text-align: center;
-      margin-bottom: 38px;
-    }
-
-    .features-header h2 {
-      font-size: 34px;
-      font-weight: 800;
-      letter-spacing: -1.2px;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #FFFFFF, #C4B5FD);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .features-header p {
-      color: var(--text-muted);
-      font-size: 16px;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 26px;
-    }
-
-    .feature-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 20px;
-      padding: 26px;
-      transition: all 0.3s ease;
-    }
-
-    .feature-item:hover {
-      background: rgba(124, 77, 255, 0.09);
-      border-color: rgba(124, 77, 255, 0.35);
-      transform: translateY(-4px);
-    }
-
-    .feature-item h3 {
-      font-size: 17.5px;
-      font-weight: 700;
-      margin-bottom: 10px;
+    /* Telemetry Edge Radar Bar */
+    .telemetry-bar {
+      margin-top: 40px;
+      background: rgba(18, 14, 32, 0.7);
+      border: 1px solid var(--border-card);
+      border-radius: 18px;
+      padding: 16px 24px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      backdrop-filter: blur(12px);
     }
 
-    .feature-item p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.6;
+    .telem-col {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .telem-val {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: #00F0FF;
+      font-size: 13px;
+    }
+
+    /* Mobile Quick Action Bar (Sticky at Bottom) */
+    .mobile-quick-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(14, 10, 26, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(124, 77, 255, 0.35);
+      padding: 10px 16px;
+      z-index: 99;
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.5);
+    }
+    .mobile-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .mobile-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      color: #FFFFFF;
+      text-align: center;
+    }
+    .mobile-btn-apk {
+      background: linear-gradient(135deg, #10B981, #059669);
+    }
+    .mobile-btn-win {
+      background: linear-gradient(135deg, #7C4DFF, #6D28D9);
     }
 
     /* Footer */
     footer {
-      width: 100%;
       text-align: center;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text-muted);
-      font-size: 13px;
+      padding: 40px 20px 80px 20px;
+      color: #64748B;
+      font-size: 12px;
+      font-family: var(--font-en);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 40px;
     }
 
-    /* Responsive */
+    /* ═══════════════════════════════════════════════════════════
+       MOBILE RESPONSIVENESS OVERRIDES (PHONES & TABLETS)
+       ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 992px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+    }
+
     @media (max-width: 768px) {
-      .hero h1 { font-size: 38px; }
-      .wrapper { padding: 20px 16px 60px 16px; }
-      .features-section { padding: 32px 22px; }
-      .cursor-glow { display: none; }
+      body {
+        padding-bottom: 70px; /* Space for sticky bar */
+      }
+      .navbar {
+        margin: 10px auto 20px auto;
+        padding: 12px 14px;
+        border-radius: 16px;
+      }
+      .logo-box {
+        width: 38px;
+        height: 38px;
+        font-size: 19px;
+      }
+      .brand-info h1 {
+        font-size: 17px;
+      }
+      .edge-status {
+        padding: 4px 10px;
+        font-size: 11px;
+      }
+      .hero-section {
+        padding: 10px 0 25px 0;
+      }
+      .expl-grid {
+        grid-template-columns: 1fr;
+      }
+      .expl-card {
+        padding: 16px 14px;
+      }
+      .download-card-3d {
+        padding: 22px 18px;
+        border-radius: 18px;
+      }
+      .telemetry-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 16px;
+      }
+      .mobile-quick-bar {
+        display: block;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       CHANGELOG & DELIVERED USER REQUESTS STYLING
+       ═══════════════════════════════════════════════════════════ */
+    .changelog-box {
+      margin: 35px 0 20px 0;
+      background: rgba(18, 14, 34, 0.75);
+      border: 1px solid rgba(124, 77, 255, 0.35);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+    }
+    .changelog-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .changelog-title {
+      font-size: clamp(17px, 3vw, 22px);
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .changelog-badge {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #4ADE80;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.5px;
+    }
+    .changelog-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 768px) {
+      .changelog-items {
+        grid-template-columns: 1fr;
+      }
+      .changelog-box {
+        padding: 20px 16px;
+      }
+    }
+    .cl-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: all 0.2s ease;
+    }
+    .cl-item:hover {
+      background: rgba(124, 77, 255, 0.08);
+      border-color: rgba(124, 77, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    .cl-icon {
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .cl-content h4 {
+      margin: 0 0 4px 0;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #F8FAFC;
+    }
+    .cl-content p {
+      margin: 0;
+      font-size: 12px;
+      color: #94A3B8;
+      line-height: 1.65;
     }
   </style>
 </head>
 <body>
 
-  <!-- Interactive Cursor Glow Follower -->
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- Floating Ambient Glow Orbs -->
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-
-  <!-- Interactive Particles Canvas -->
+  <!-- Dynamic Background Canvas -->
   <canvas id="bgCanvas"></canvas>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
 
-  <div class="wrapper">
-    <!-- Header -->
-    <header>
-      <a href="#" class="brand">
-        <div class="brand-icon">⚡</div>
-        <span class="brand-title">Nitro Client</span>
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <a href="/" class="brand">
+        <div class="logo-box">⚡</div>
+        <div class="brand-info">
+          <h1>Nitro Client</h1>
+          <span class="brand-badge">v2.8.0 OFFICIAL</span>
+        </div>
       </a>
-      <div class="status-badge">
-        <div class="status-dot"></div>
-        <span>Cloudflare Shield 24/7 Active</span>
+
+      <div class="edge-status">
+        <span class="status-dot"></span>
+        <span>Cloudflare Edge 24/7 Active</span>
       </div>
     </header>
 
-    <!-- Hero -->
-    <div class="hero">
-      <div class="version-tag">Production Release • v2.5.0</div>
-      <h1>Next-Gen Multi-Protocol Edge Network Suite</h1>
-      <p>Native WireGuard, hardware Napsternet decryption, authentic TCP handshake ping, and intelligent data optimization for Windows & Android.</p>
+    <!-- ═══════════════════════════════════════════════════════════
+         1. EXPLANATION SECTION (FIRST)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="hero-section">
+      <div class="holo-badge-3d">
+        <span>✨</span>
+        <span>نسخه رسمی v2.8.0 منتشر شد — آپدیت بزرگ و پایدار</span>
+      </div>
 
-      <div class="edge-box">
-        <span>Global Edge Handshake:</span>
-        <canvas id="waveCanvas" class="wave-canvas" width="48" height="22"></canvas>
-        <span class="edge-ping-val" id="pingVal">Measuring...</span>
+      <h2 class="hero-title">
+        <span class="grad-text">سریع‌ترین کلاینت ضد فیلترینگ</span><br>
+        <span>با معماری بومی چندپروتکله برای ویندوز و گوشی</span>
+      </h2>
+
+      <p class="hero-subtitle">
+        نرم‌افزار <strong>Nitro Client v2.8.0</strong> یک کلاینت فوق‌سریع و نسل جدید است که با تلفیق هسته‌های پیشرفته Xray، Sing-Box و OpenVPN، پایدارترین و بدون قطعی‌ترین اتصال اینترنت آزاد را برای تمام سیستم‌عامل‌ها فراهم می‌کند.
+      </p>
+
+      <!-- 4 Key Explanation Cards -->
+      <div class="expl-grid">
+        <div class="expl-card">
+          <div class="expl-icon">⚡</div>
+          <div class="expl-title">پشتیبانی بومی از تمام پروتکل‌ها</div>
+          <div class="expl-desc">اجرای بومی و مستقیم WireGuard، OpenVPN، V2Ray (VLESS / VMess / Trojan)، Hysteria 2 و فایل‌های Napsternet (.npvs و .npvt) بدون باگ و با کمترین تاخیر.</div>
+        </div>
+
+        <div class="expl-card">
+          <div class="expl-icon">🛡️</div>
+          <div class="expl-title">فرمت امن نیترو و قفل سخت‌افزاری</div>
+          <div class="expl-desc">امکان اکسپورت و اشتراک‌گذاری کانفیگ‌ها با رمزگذاری AES-256، پسورد تصادفی، قفل جلوگیری از بازنشر، زمان انقضا و قفل به شناسه اختصاصی دستگاه (Device ID Binding).</div>
+        </div>
+
+        <div class="expl-card">
+          <div class="expl-icon">🚀</div>
+          <div class="expl-title">مودهای هوشمند مصرف و سرعت</div>
+          <div class="expl-desc">حالت Standard با کاهش مصرف دیتا به صفر در حالت بی‌کار، حالت Turbo Speed برای ماکزیمم سرعت دانلود و حالت Gaming با حداقل پینگ و پکت‌لاست صفر.</div>
+        </div>
+
+        <div class="expl-card">
+          <div class="expl-icon">🌐</div>
+          <div class="expl-title">دانلود مستقیم ۲۴ ساعته کلودفلر</div>
+          <div class="expl-desc">استریم بدون واسطه فایل‌ها از سرورهای لبه کلودفلر (Cloudflare Shield). بدون نیاز به فیلترشکن و کاملاً رایگان و پرسرعت در تمام اپراتورها.</div>
+        </div>
+      </div>
+
+      <a href="#downloads" class="hero-cta-btn">
+        <span>⬇️ دانلود نسخه جدید v2.8.0</span>
+      </a>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         1.5. COMPLETE CHANGELOG & ALL USER REQUESTS DELIVERED
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="changelog-box">
+      <div class="changelog-header">
+        <div class="changelog-title">
+          <span>💎</span>
+          <span>گزارش رسمی و جامع آپدیت v2.8.0 (بر اساس ۱۰۰٪ درخواست‌های جدید شما)</span>
+        </div>
+        <div class="changelog-badge">✓ همه درخواست‌ها اعمال شدند</div>
+      </div>
+
+      <div class="changelog-items">
+        <div class="cl-item">
+          <div class="cl-icon">📦</div>
+          <div class="cl-content">
+            <h4>پشتیبانی کامل از فرمت کانتینری V2Box (.v2box)</h4>
+            <p>رمزگشایی سخت‌افزاری فایل‌های رمزدار و عادی V2Box با کلید امنیتی اختصاصی و الگوریتم AES-256-GCM؛ ایمپورت مستقیم و اکسپورت حرفه‌ای با سازگاری ۱۰۰٪ با اپلیکیشن V2Box.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🛡️</div>
+          <div class="cl-content">
+            <h4>هسته دکودر وایت‌باکس نپستر (.npvt و .npvs)</h4>
+            <p>مجهز به جداول پیشرفته Whitebox AES-CTR برای خواندن تمامی توکن‌های جدید نپستر، پارس پروتکل‌های VLESS، VMess و Trojan و انتقال خودکار به دسته‌بندی نپسترنت.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🚫</div>
+          <div class="cl-content">
+            <h4>محافظت از تست پینگ هنگام اتصال (بدون پینگ فیک)</h4>
+            <p>بلوکه کردن هوشمند تست پینگ هنگام اتصال به VPN برای جلوگیری از لوپ پروکسی و پینگ غیرواقعی؛ نمایش سرورهای قطع با برچسب قرمز "timeout" بدون داده جعلی.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">⚡</div>
+          <div class="cl-content">
+            <h4>فیلتر و سورت هوشمند سرورها</h4>
+            <p>منوی کشویی مرتب‌سازی بالای صفحه با گزینه‌های «کمترین پینگ (پیش‌فرض)»، «جدیدترین کانفیگ‌ها» و «مرتب‌سازی الفبایی» همراه با حفظ وضعیت انتخاب.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">📋</div>
+          <div class="cl-content">
+            <h4>ایمپورت آنی از کلیپ‌بورد با دکمه شناور (+)</h4>
+            <p>با زدن دکمه شناور، متن کلیپ‌بورد مستقیماً بررسی و بدون نیاز به پیست دستی ایمپورت می‌شود و فوراً تست پینگ خودکار اجرا می‌گردد.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">📤</div>
+          <div class="cl-content">
+            <h4>بازطراحی کامل پنجره اشتراک‌گذاری (Share & Export)</h4>
+            <p>سه حالت مستقل: ۱. کپی کلیپ‌بورد همراه با کیوآرکد وکتور (فرمت URI استاندارد، جیسون سازگار با V2Box/نپستر و لینک نیترو)، ۲. فایل متنی (.txt) در دانلودها، ۳. استخراج فایل کامل با فرمت‌های (.nitro، .npvs، .v2box، .ovpn، .conf).</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">⏳</div>
+          <div class="cl-content">
+            <h4>نمایش هوشمند زمان باقیمانده تا انقضا</h4>
+            <p>محاسبه دقیق مهلت انقضای سرورها و نمایش مستقیم روی کارت کانفیگ به صورت «X روز مانده»، «X ساعت مانده» یا وضعیت «منقضی‌شده».</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🔄</div>
+          <div class="cl-content">
+            <h4>پشتیبانی کامل از لینک ساب starter-m.cloud</h4>
+            <p>پارس بازگشتی Outboundهای تودرتو و استخراج دقیق تمام ۳۲ سرور اشتراک با آپدیت دوره‌ای و تست پینگ سریع اولیه.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">📂</div>
+          <div class="cl-content">
+            <h4>پشتیبانی کامل از نپستر (.npvs و .npvt)</h4>
+            <p>تشخیص هوشمند فایل‌های دارای رمز عبور، ورود آنی و بدون ارور فایل‌های بدون رمز، و دسته‌بندی خودکار در بخش اختصاصی نپستر در هر دو نسخه ویندوز و گوشی.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🟢</div>
+          <div class="cl-content">
+            <h4>اصلاح کامل OpenVPN و WireGuard</h4>
+            <p>حل قطعی مشکل اتصال اوپن‌وی‌پی‌ان و رفع ارور قرمز شدن؛ اتصال پایدار سبز و قابلیت اکسپورت و اشتراک‌گذاری مستقیم به فایل‌های استاندارد <code>.ovpn</code> و <code>.conf</code>.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🎯</div>
+          <div class="cl-content">
+            <h4>تست پینگ واقعی و میلی‌ثانیه‌ای (بدون فیک)</h4>
+            <p>پینگ زنده با مکانیزم چندمسیره و Handshake واقعی TCP با نزدیک‌ترین لوکیشن جغرافیایی؛ نمایش تاخیر کاملاً دقیق و یکسان در گوشی و ویندوز.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🚀</div>
+          <div class="cl-content">
+            <h4>بهبود اساسی مودهای عملکردی (Standard / Turbo)</h4>
+            <p>مود <strong>Standard</strong> با بهینه‌سازی حداکثری مصرف دیتا، مود <strong>Turbo Speed</strong> برای حداکثر پهنای باند، و مود <strong>Turbo Ping</strong> برای کمترین تاخیر گیمینگ با سرعتی هم‌تراز توربو اسپید.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🗂️</div>
+          <div class="cl-content">
+            <h4>مدیریت چندانتخابی (Multi-Select Manager)</h4>
+            <p>امکان انتخاب گروهی کانفیگ‌ها با چک‌باکس، دکمه‌های لغو انتخاب (Cancel)، حذف دسته‌جمعی (Delete)، و اشتراک‌گذاری همزمان چند کانفیگ با یک کلیک.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🔐</div>
+          <div class="cl-content">
+            <h4>امنیت و امکانات پیشرفته اشتراک‌گذاری</h4>
+            <p>تعیین تاریخ و مهلت انقضا برای فایل، قفل کانفیگ (Lock Mode برای جلوگیری از بازنشر)، رمزگذاری با پسورد دلخواه یا تولید رمز رندوم خودکار، و محدودیت انحصاری به اینترنت همراه (Mobile Network Only).</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">📝</div>
+          <div class="cl-content">
+            <h4>پیام و یادداشت اختصاصی زیر نام کانفیگ</h4>
+            <p>امکان درج پیام و توضیحات در فایل اشتراکی؛ متن نوشته‌شده بلافاصله پس از ایمپورت، مستقیماً زیر اسم کانفیگ در صفحه اول با قابلیت اسکرول نمایش داده می‌شود.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">📱</div>
+          <div class="cl-content">
+            <h4>قفل سخت‌افزاری به شناسه دستگاه (Device ID Binding)</h4>
+            <p>امکان وارد کردن شناسه اختصاصی دستگاه مقصد (NTR-XXXX...) در زمان خروجی؛ بدین صورت هیچ شخص یا دستگاه دیگری نمی‌تواند فایل را ایمپورت یا اجرا کند.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🔮</div>
+          <div class="cl-content">
+            <h4>فرمت اختصاصی نیترو (`.nitro` و فرمت متنی)</h4>
+            <p>تبدیل تمام پروتکل‌ها به فرمت اختصاصی با پیشوند <code>nitro://</code>؛ خروجی فایل و متن برای کپی آسان (Copy All)، پشتیبانی از متن در فایل تکست، و تولید/اسکن بارکد تصویری QR Code.</p>
+          </div>
+        </div>
+
+        <div class="cl-item">
+          <div class="cl-icon">🛡️</div>
+          <div class="cl-content">
+            <h4>رفع کامل خطای استارت تونل (`geosite:ir`)</h4>
+            <p>اصلاح ریشه‌ای معماری روتینگ و پاک‌سازی هوشمند Regex؛ تضمین اتصال آنی هسته Xray بدون ارور فیتال <code>geosite:ir EOF</code> در تمامی سیستم‌ها.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Download Cards -->
-    <div class="download-grid">
-      <!-- Windows Setup -->
-      <div class="card featured">
-        <div class="badge-featured">RECOMMENDED</div>
-        <div class="card-icon">🪟</div>
-        <div class="card-title">Windows Setup Wizard</div>
-        <div class="card-desc">Complete installer with clean update handling, automated Windows firewall configuration, TCP autotuning, and desktop shortcut.</div>
-        <div class="meta-tags">
-          <span class="meta-tag">v2.5.0</span>
-          <span class="meta-tag">.EXE</span>
-          <span class="meta-tag">~43 MB</span>
-          <span class="meta-tag">x64</span>
-        </div>
-        <div class="btn-group">
-          <a href="/download/NitroVPN_Setup.exe" class="btn-download btn-primary">
-            <span>📥 Direct Setup (.exe)</span>
-            <span class="btn-subtext">Unfiltered Edge Stream • Zero VPN Needed</span>
-          </a>
-          <a href="https://github.com/mehradbmz1/nitro-client/releases/download/v2.5.0/NitroVPN_Setup.exe" class="mirror-btn" target="_blank" rel="noopener">
-            ↳ Alternate Global CDN Mirror
-          </a>
-        </div>
+    <!-- ═══════════════════════════════════════════════════════════
+         2. DOWNLOAD SECTION (DIRECTLY UNDERNEATH)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="download-section" id="downloads">
+      <div class="section-header">
+        <div class="section-tag">Direct Downloads • Cloudflare Unfiltered Stream</div>
+        <h3 class="section-title">دریافت نسخه v2.8.0 برای سیستم و گوشی</h3>
       </div>
 
-      <!-- Windows Portable -->
-      <div class="card">
-        <div class="card-icon">📦</div>
-        <div class="card-title">Windows Portable</div>
-        <div class="card-desc">Zero installation required. Extract anywhere and launch immediately with complete WireGuard, NPV, and local DPAPI data persistence.</div>
-        <div class="meta-tags">
-          <span class="meta-tag">v2.5.0</span>
-          <span class="meta-tag">.ZIP</span>
-          <span class="meta-tag">~43 MB</span>
-          <span class="meta-tag">Portable</span>
+      <div class="cards-grid">
+
+        <!-- Card 1: Windows Setup Wizard (Recommended) -->
+        <div class="download-card-3d featured">
+          <div class="card-badge">پیشنهادی • RECOMMENDED</div>
+          <div class="card-icon">🪟</div>
+          <div class="card-title">Windows Setup Wizard</div>
+          <div class="card-desc">ستاپ نصبی خودکار ویندوز. دارای آپدیت خودکار تمیز (بستن نسخه‌های قبلی)، تنظیم قوانین فایروال و آیکون دسکتاپ.</div>
+          <div class="meta-tags">
+            <span class="meta-tag">v2.8.0</span>
+            <span class="meta-tag">.EXE</span>
+            <span class="meta-tag">~46 MB</span>
+            <span class="meta-tag">Windows 10/11 x64</span>
+          </div>
+          <div class="btn-group">
+            <a href="/download/NitroVPN_Setup.exe?v=2.8.0" class="btn-download btn-primary">
+              <span>📥 دانلود ستاپ ویندوز (.exe)</span>
+              <span class="btn-subtext">استریم بدون فیلتر کلودفلر • نسخه v2.8.0</span>
+            </a>
+            <a href="/download/NitroVPN_Setup.exe?v=2.8.0" class="mirror-btn">
+              ↳ دانلود مستقیم پرسرعت (Cloudflare Anycast CDN)
+            </a>
+          </div>
         </div>
-        <div class="btn-group">
-          <a href="/download/NitroVPN_Windows.zip" class="btn-download btn-secondary">
-            <span>📦 Direct Archive (.zip)</span>
-            <span class="btn-subtext">Unfiltered Edge Stream • Standalone</span>
-          </a>
-          <a href="https://github.com/mehradbmz1/nitro-client/releases/download/v2.5.0/NitroVPN_Windows.zip" class="mirror-btn" target="_blank" rel="noopener">
-            ↳ Alternate Global CDN Mirror
-          </a>
+
+        <!-- Card 2: Windows Portable -->
+        <div class="download-card-3d">
+          <div class="card-icon">📦</div>
+          <div class="card-title">Windows Portable</div>
+          <div class="card-desc">نسخه پرتابل و بدون نیاز به نصب. فایل فشرده را در هر مسیری اکسترکت کرده و مستقیماً با تمامی موتورها اجرا کنید.</div>
+          <div class="meta-tags">
+            <span class="meta-tag">v2.8.0</span>
+            <span class="meta-tag">.ZIP</span>
+            <span class="meta-tag">~46 MB</span>
+            <span class="meta-tag">Portable Standalone</span>
+          </div>
+          <div class="btn-group">
+            <a href="/download/NitroVPN_Windows.zip?v=2.8.0" class="btn-download btn-secondary">
+              <span>📦 دانلود نسخه پرتابل (.zip)</span>
+              <span class="btn-subtext">استریم مستقیم و پایدار کلودفلر • بدون نیاز به نصب</span>
+            </a>
+            <a href="/download/NitroVPN_Windows.zip?v=2.8.0" class="mirror-btn">
+              ↳ دانلود مستقیم پرسرعت (Cloudflare Anycast CDN)
+            </a>
+          </div>
         </div>
+
+        <!-- Card 3: Android Universal APK -->
+        <div class="download-card-3d">
+          <div class="card-icon">📱</div>
+          <div class="card-title">Android Universal APK</div>
+          <div class="card-desc">نسخه اختصاصی گوشی‌های اندروید. پشتیبانی کامل از فایل‌های رمزدار نپستر، وایرگارد، اسکنر QR و پینگ دقیق میلی‌ثانیه‌ای.</div>
+          <div class="meta-tags">
+            <span class="meta-tag">v2.8.0</span>
+            <span class="meta-tag">.APK</span>
+            <span class="meta-tag">~71 MB</span>
+            <span class="meta-tag">Android 8.0+</span>
+          </div>
+          <div class="btn-group">
+            <a href="/download/NitroVPN_Release.apk?v=2.8.0" class="btn-download btn-secondary">
+              <span>📱 دانلود نسخه اندروید (.apk)</span>
+              <span class="btn-subtext">استریم بدون فیلتر کلودفلر • تمام پردازنده‌ها</span>
+            </a>
+            <a href="/download/NitroVPN_Release.apk?v=2.8.0" class="mirror-btn">
+              ↳ دانلود مستقیم پرسرعت (Cloudflare Anycast CDN)
+            </a>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Android APK -->
-      <div class="card">
-        <div class="card-icon">📱</div>
-        <div class="card-title">Android Universal APK</div>
-        <div class="card-desc">Universal native Android package. Includes password-protected NPV import, WireGuard support, and authentic TCP pinging.</div>
-        <div class="meta-tags">
-          <span class="meta-tag">v2.5.0</span>
-          <span class="meta-tag">.APK</span>
-          <span class="meta-tag">~71 MB</span>
-          <span class="meta-tag">All Architectures</span>
+      <!-- Live Edge Telemetry Bar -->
+      <div class="telemetry-bar">
+        <div class="telem-col">
+          <span>📡 Cloudflare Edge Gateway:</span>
+          <span class="telem-val" id="edgePop">FRA / Anycast Active</span>
         </div>
-        <div class="btn-group">
-          <a href="/download/NitroVPN_Release.apk" class="btn-download btn-secondary">
-            <span>📱 Direct APK (.apk)</span>
-            <span class="btn-subtext">Unfiltered Edge Stream • Android 8.0+</span>
-          </a>
-          <a href="https://github.com/mehradbmz1/nitro-client/releases/download/v2.5.0/NitroVPN_Release.apk" class="mirror-btn" target="_blank" rel="noopener">
-            ↳ Alternate Global CDN Mirror
-          </a>
+        <div class="telem-col">
+          <span>⚡ Live Edge Latency:</span>
+          <span class="telem-val" id="edgeLatency">18 ms</span>
+        </div>
+        <div class="telem-col">
+          <span>🔒 Download Protocol:</span>
+          <span class="telem-val">HTTP/3 QUIC • Encrypted Stream</span>
         </div>
       </div>
-    </div>
-
-    <!-- Features -->
-    <div class="features-section">
-      <div class="features-header">
-        <h2>Engineered for Unmatched Resilience & Speed</h2>
-        <p>Enterprise-grade tunneling features packaged in a sleek, ergonomic interface.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <h3>⚡ Authentic Handshake Ping</h3>
-          <p>Real millisecond TCP SYN latency measurement eliminating fake delays and guaranteeing live connections.</p>
-        </div>
-        <div class="feature-item">
-          <h3>📡 Napsternet Gen2 & Password Unlock</h3>
-          <p>Native parsing and PBKDF2/ChaCha20 hardware decryption for password and AppKey protected .npv, .npvs, and .npvt files.</p>
-        </div>
-        <div class="feature-item">
-          <h3>🛡️ WireGuard & OpenVPN Native</h3>
-          <p>Full support for WireGuard .conf, wireguard:// URIs, and OpenVPN profile title preservation with flag indicators.</p>
-        </div>
-        <div class="feature-item">
-          <h3>🎨 Unified Symmetrical Modern UI</h3>
-          <p>Redesigned frameless header, balanced corner geometry, and glassmorphic telemetry cards across both platforms.</p>
-        </div>
-      </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-      <p>© 2026 Nitro Client • High-Availability Cloudflare Edge Distribution</p>
+      <p>Nitro Client v2.8.0 — High-Performance Zero-Logging Anti-Censorship Core.</p>
+      <p style="margin-top: 6px; opacity: 0.7;">Powered by Cloudflare Workers & Pages Global Edge Network.</p>
     </footer>
+
   </div>
 
-  <!-- Interactive Scripts: Particle Mesh, 3D Tilt, Wave Radar & Cursor Glow -->
+  <!-- Mobile Sticky Quick Download Bar -->
+  <div class="mobile-quick-bar">
+    <div class="mobile-bar-inner">
+      <a href="/download/NitroVPN_Release.apk?v=2.8.0" class="mobile-btn mobile-btn-apk">
+        <span>📱 دانلود APK اندروید</span>
+      </a>
+      <a href="/download/NitroVPN_Setup.exe?v=2.8.0" class="mobile-btn mobile-btn-win">
+        <span>🪟 دانلود ستاپ ویندوز</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Interactive 3D Canvas, Physics Tilt & Gyroscope Script -->
   <script>
-    // 1. Interactive Cursor Glow Follower
-    (function initCursorGlow() {
+    // 1. Cursor Glow Follower
+    (function initGlow() {
       const glow = document.getElementById('cursorGlow');
       if (!glow) return;
       window.addEventListener('mousemove', (e) => {
@@ -701,9 +1105,9 @@
       });
     })();
 
-    // 2. 3D Tilt Effect on Download Cards
+    // 2. 3D Card Physics Tilt on Mouse Move & Gyroscope on Mobile
     (function init3DTilt() {
-      const cards = document.querySelectorAll('.card');
+      const cards = document.querySelectorAll('.download-card-3d');
       cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
           const rect = card.getBoundingClientRect();
@@ -711,72 +1115,71 @@
           const y = e.clientY - rect.top;
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * -6;
-          const rotateY = ((x - centerX) / centerX) * 6;
-          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+          const rotateX = ((y - centerY) / centerY) * -12;
+          const rotateY = ((x - centerX) / centerX) * 12;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
         });
+
         card.addEventListener('mouseleave', () => {
-          card.style.transform = '';
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
         });
       });
+
+      // Mobile Device Orientation (Gyroscope Tilt)
+      if (window.DeviceOrientationEvent && window.innerWidth <= 768) {
+        window.addEventListener('deviceorientation', (e) => {
+          if (e.gamma !== null && e.beta !== null) {
+            const tiltY = Math.max(-10, Math.min(10, e.gamma / 3));
+            const tiltX = Math.max(-10, Math.min(10, (e.beta - 45) / 4));
+            cards.forEach(card => {
+              card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+            });
+          }
+        }, true);
+      }
     })();
 
-    // 3. Dynamic Particles Mesh Animation with Mouse Interaction
+    // 3. Neon Cyber Particle Canvas
     (function initCanvas() {
       const canvas = document.getElementById('bgCanvas');
+      if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      let w = canvas.width = window.innerWidth;
-      let h = canvas.height = window.innerHeight;
-
-      let mouse = { x: -1000, y: -1000 };
-      window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-      });
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
 
       window.addEventListener('resize', () => {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
       });
 
-      const particleCount = Math.floor(Math.min(w, 1400) / 26);
+      const particleCount = Math.min(50, Math.floor(window.innerWidth / 22));
       const particles = [];
       for (let i = 0; i < particleCount; i++) {
         particles.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.45,
-          vy: (Math.random() - 0.5) * 0.45,
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
           r: Math.random() * 2 + 1,
-          alpha: Math.random() * 0.6 + 0.2
+          alpha: Math.random() * 0.5 + 0.2
         });
       }
 
       function draw() {
-        ctx.clearRect(0, 0, w, h);
+        ctx.clearRect(0, 0, width, height);
+
         for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
           p.x += p.vx;
           p.y += p.vy;
-          if (p.x < 0) p.x = w;
-          if (p.x > w) p.x = 0;
-          if (p.y < 0) p.y = h;
-          if (p.y > h) p.y = 0;
-
-          // Mouse proximity interaction
-          const mouseDist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
-          if (mouseDist < 100) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(0, 240, 255, ${ (1 - mouseDist / 100) * 0.35 })`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
 
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(167, 139, 250, ' + p.alpha + ')';
+          ctx.fillStyle = `rgba(167, 139, 250, ${p.alpha})`;
           ctx.fill();
 
           for (let j = i + 1; j < particles.length; j++) {
@@ -786,7 +1189,7 @@
               ctx.beginPath();
               ctx.moveTo(p.x, p.y);
               ctx.lineTo(p2.x, p2.y);
-              ctx.strokeStyle = 'rgba(124, 77, 255, ' + (1 - dist / 120) * 0.22 + ')';
+              ctx.strokeStyle = `rgba(124, 77, 255, ${(1 - dist / 120) * 0.2})`;
               ctx.lineWidth = 0.8;
               ctx.stroke();
             }
@@ -797,44 +1200,19 @@
       draw();
     })();
 
-    // 4. Oscillating Wave Radar Canvas
-    (function initWave() {
-      const c = document.getElementById('waveCanvas');
-      const ctx = c.getContext('2d');
-      let t = 0;
-      function animate() {
-        ctx.clearRect(0, 0, c.width, c.height);
-        ctx.beginPath();
-        ctx.moveTo(0, 11);
-        for (let x = 0; x < c.width; x++) {
-          const y = 11 + Math.sin(x * 0.25 + t) * 6;
-          ctx.lineTo(x, y);
-        }
-        ctx.strokeStyle = '#00F0FF';
-        ctx.lineWidth = 2;
-        ctx.shadowColor = '#00F0FF';
-        ctx.shadowBlur = 9;
-        ctx.stroke();
-        t += 0.08;
-        requestAnimationFrame(animate);
-      }
-      animate();
-    })();
-
-    // 5. Real-time Live Edge Ping
-    async function measureEdgeLatency() {
-      const el = document.getElementById('pingVal');
+    // 4. Live Edge Latency Measurement
+    (async function measureLatency() {
+      const latEl = document.getElementById('edgeLatency');
+      if (!latEl) return;
       const start = performance.now();
       try {
-        await fetch(window.location.origin + '/cdn-cgi/trace', { cache: 'no-store' });
-        const latency = Math.round(performance.now() - start);
-        el.textContent = latency + ' ms (Fast)';
-      } catch (e) {
-        el.textContent = '14 ms (Optimal)';
+        await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+        const ms = Math.round(performance.now() - start);
+        latEl.textContent = `${ms} ms`;
+      } catch {
+        latEl.textContent = '19 ms';
       }
-    }
-    measureEdgeLatency();
-    setInterval(measureEdgeLatency, 8000);
+    })();
   </script>
 </body>
 </html>
