@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Nitro Client v3.0.1 — دانلود مستقیم و ۲۴ ساعته نسخه جدید</title>
-  <meta name="description" content="دانلود نسخه جدید Nitro Client v3.0.1 برای ویندوز و اندروید. پشتیبانی بومی از WireGuard، OpenVPN، Napsternet (.npvt/.npvs)، فرمت اختصاصی نیترو و قفل سخت‌افزاری دستگاه.">
+  <meta name="description" content="دانلود نسخه جدید Nitro Client v3.0.1 برای ویندوز و اندروید. پشتیبانی بومی از WireGuard، OpenVPN، Napsternet (.npvt/.npvs)، تست پینگ واقعی و اتصال پایدار.">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/app_logo.png">
+  <link rel="apple-touch-icon" href="/app_logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -651,94 +654,6 @@
         display: block;
       }
     }
-
-    /* ═══════════════════════════════════════════════════════════
-       CHANGELOG & DELIVERED USER REQUESTS STYLING
-       ═══════════════════════════════════════════════════════════ */
-    .changelog-box {
-      margin: 35px 0 20px 0;
-      background: rgba(18, 14, 34, 0.75);
-      border: 1px solid rgba(124, 77, 255, 0.35);
-      border-radius: 24px;
-      padding: 30px;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
-    }
-    .changelog-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 22px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding-bottom: 16px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .changelog-title {
-      font-size: clamp(17px, 3vw, 22px);
-      font-weight: 800;
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .changelog-badge {
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid rgba(34, 197, 94, 0.4);
-      color: #4ADE80;
-      font-size: 11.5px;
-      font-weight: 800;
-      padding: 5px 14px;
-      border-radius: 999px;
-      letter-spacing: 0.5px;
-    }
-    .changelog-items {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-    @media (max-width: 768px) {
-      .changelog-items {
-        grid-template-columns: 1fr;
-      }
-      .changelog-box {
-        padding: 20px 16px;
-      }
-    }
-    .cl-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 16px;
-      padding: 14px 16px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      transition: all 0.2s ease;
-    }
-    .cl-item:hover {
-      background: rgba(124, 77, 255, 0.08);
-      border-color: rgba(124, 77, 255, 0.4);
-      transform: translateY(-2px);
-    }
-    .cl-icon {
-      font-size: 22px;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .cl-content h4 {
-      margin: 0 0 4px 0;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: #F8FAFC;
-    }
-    .cl-content p {
-      margin: 0;
-      font-size: 12px;
-      color: #94A3B8;
-      line-height: 1.65;
-    }
   </style>
 </head>
 <body>
@@ -755,7 +670,7 @@
     <!-- Top Navigation Bar -->
     <header class="navbar">
       <a href="/" class="brand">
-        <div class="logo-box">⚡</div>
+        <img src="/app_logo.png" alt="Nitro VPN" class="logo-box" style="padding:0; overflow:hidden; border:none; object-fit:cover;" />
         <div class="brand-info">
           <h1>Nitro Client</h1>
           <span class="brand-badge">v3.0.1 OFFICIAL</span>
@@ -768,278 +683,63 @@
       </div>
     </header>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         1. EXPLANATION SECTION (FIRST)
+        <!-- ═══════════════════════════════════════════════════════════
+         1. HERO SECTION & CORE HIGHLIGHTS
          ═══════════════════════════════════════════════════════════ -->
     <section class="hero-section">
       <div class="holo-badge-3d">
         <span>✨</span>
-        <span>نسخه رسمی v3.0.1 منتشر شد — آپدیت بزرگ و پایدار</span>
+        <span>نسخه رسمی v3.0.1 منتشر شد — ویندوز و اندروید</span>
       </div>
 
       <h2 class="hero-title">
-        <span class="grad-text">سریع‌ترین کلاینت ضد فیلترینگ</span><br>
-        <span>با معماری بومی چندپروتکله برای ویندوز و گوشی</span>
+        <span class="grad-text">دانلود مستقیم فیلترشکن Nitro VPN</span><br>
+        <span>اتصال پایدار، هوشمند و پرسرعت</span>
       </h2>
 
       <p class="hero-subtitle">
-        نرم‌افزار <strong>Nitro Client v3.0.1</strong> یک کلاینت فوق‌سریع و نسل جدید است که با تلفیق هسته‌های پیشرفته Xray، Sing-Box و OpenVPN، پایدارترین و بدون قطعی‌ترین اتصال اینترنت آزاد را برای تمام سیستم‌عامل‌ها فراهم می‌کند.
+        نرم‌افزار <strong>Nitro Client v3.0.1</strong> کلاینت اختصاصی و بدون قطعی برای ویندوز و گوشی با تست پینگ کاملاً واقعی، پشتیبانی از تمام پروتکل‌ها و مصرف بهینه اینترنت.
       </p>
 
-      <!-- 4 Key Explanation Cards -->
+      <!-- 4 Core Highlights -->
       <div class="expl-grid">
         <div class="expl-card">
           <div class="expl-icon">⚡</div>
-          <div class="expl-title">پشتیبانی بومی از تمام پروتکل‌ها</div>
-          <div class="expl-desc">اجرای بومی و مستقیم WireGuard، OpenVPN، V2Ray (VLESS / VMess / Trojan)، Hysteria 2 و فایل‌های Napsternet (.npvs و .npvt) بدون باگ و با کمترین تاخیر.</div>
+          <div class="expl-title">اتصال پایدار به تمام پروتکل‌ها</div>
+          <div class="expl-desc">پشتیبانی کامل و بومی از VLESS، WireGuard/AWG، OpenVPN و فرمت‌های Napsternet (.npvt/.npvs).</div>
+        </div>
+
+        <div class="expl-card">
+          <div class="expl-icon">🎯</div>
+          <div class="expl-title">تست پینگ ۱۰۰٪ واقعی</div>
+          <div class="expl-desc">سنجش مستقیم تأخیر از درون تونل فعال بدون پینگ فیک و پینگ سبز کاذب.</div>
+        </div>
+
+        <div class="expl-card">
+          <div class="expl-icon">📋</div>
+          <div class="expl-title">ایمپورت آنی و هوشمند</div>
+          <div class="expl-desc">شناسایی و افزودن خودکار کانفیگ‌ها و لینک‌های سابسکریپشن تنها با یک کلیک از کلیپ‌بورد.</div>
         </div>
 
         <div class="expl-card">
           <div class="expl-icon">🛡️</div>
-          <div class="expl-title">فرمت امن نیترو و قفل سخت‌افزاری</div>
-          <div class="expl-desc">امکان اکسپورت و اشتراک‌گذاری کانفیگ‌ها با رمزگذاری AES-256، پسورد تصادفی، قفل جلوگیری از بازنشر، زمان انقضا و قفل به شناسه اختصاصی دستگاه (Device ID Binding).</div>
-        </div>
-
-        <div class="expl-card">
-          <div class="expl-icon">🚀</div>
-          <div class="expl-title">مودهای هوشمند مصرف و سرعت</div>
-          <div class="expl-desc">حالت Standard با کاهش مصرف دیتا به صفر در حالت بی‌کار، حالت Turbo Speed برای ماکزیمم سرعت دانلود و حالت Gaming با حداقل پینگ و پکت‌لاست صفر.</div>
-        </div>
-
-        <div class="expl-card">
-          <div class="expl-icon">🌐</div>
-          <div class="expl-title">دانلود مستقیم ۲۴ ساعته کلودفلر</div>
-          <div class="expl-desc">استریم بدون واسطه فایل‌ها از سرورهای لبه کلودفلر (Cloudflare Shield). بدون نیاز به فیلترشکن و کاملاً رایگان و پرسرعت در تمام اپراتورها.</div>
+          <div class="expl-title">امنیت بالا و مصرف بهینه دیتا</div>
+          <div class="expl-desc">رمزنگاری پیشرفته داده‌ها، کاهش مصرف اینترنت به نزدیک صفر در حالت استندبای و بدون ثبت لاگ.</div>
         </div>
       </div>
 
       <a href="#downloads" class="hero-cta-btn">
-        <span>⬇️ دانلود نسخه جدید v3.0.1</span>
+        <span>⬇️ دریافت نسخه ویندوز و اندروید</span>
       </a>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         1.5. COMPLETE CHANGELOG & ALL USER REQUESTS DELIVERED
-         ═══════════════════════════════════════════════════════════ -->
-    <div class="changelog-box">
-      <div class="changelog-header">
-        <div class="changelog-title">
-          <span>💎</span>
-          <span>گزارش رسمی و جامع آپدیت v3.0.1 (بر اساس ۱۰۰٪ درخواست‌های جدید شما)</span>
-        </div>
-        <div class="changelog-badge">✓ همه درخواست‌ها اعمال شدند</div>
-      </div>
-
-      <div class="changelog-items">
-        <div class="cl-item">
-          <div class="cl-icon">🔥</div>
-          <div class="cl-content">
-            <h4>ارتقای هسته اندروید به Xray 26.11.9 (پشتیبانی کامل از pcs و سابسکریپشن‌های جدید)</h4>
-            <p>به‌روزرسانی هسته بومی اندروید به جدیدترین نسخه رسمی Xray 26.11.9 با پشتیبانی ۱۰۰٪ از پین گواهینامه TLS (pcs / pinnedPeerCertSha256)، کانفیگ‌های Fastly/Cloudflare، VLESS+HTTPUpgrade بدون TLS روی IP عمومی و پساکوانتومی ML-KEM.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">📡</div>
-          <div class="cl-content">
-            <h4>تست پینگ کاملاً واقعی End-to-End در ویندوز و اندروید (بدون پینگ فیک)</h4>
-            <p>اجرای تست واقعی HTTP 204 از داخل تانل هسته Xray 26 در هر دو نسخه ویندوز و اندروید برای تشخیص دقیق سرورهای زنده از سرورهای قطع (نمایش قرمز timeout)؛ اصلاح کامل نمایش نام سابسکریپشن‌های base64 و حذف اجباری Mux از WebSocket/CDN.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🛡️</div>
-          <div class="cl-content">
-            <h4>هسته بومی OpenVPN در اندروید و ویندوز (رفع کامل خطای قرمز)</h4>
-            <p>اضافه شدن موتور کامل بومی OpenVPN در اندروید و اصلاح درایور خودکار DCO/Wintun در ویندوز؛ پشتیبانی کامل از فایل‌های چندسروره (.ovpn)، استخراج نام واقعی FRIENDLY_NAME و اتصال پایدار بدون ارور.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">⚡</div>
-          <div class="cl-content">
-            <h4>رفع کامل گیر کردن روی حالت زرد در NPV (.npvs/.npvt) و WireGuard (.conf)</h4>
-            <p>پشتیبانی ۱۰۰٪ از فیلد v2rayJson در بسته‌های جدید NPVO1 (شامل VLESS پساکوانتومی ML-KEM و IPv6)، حذف لوپ سوکت در هسته اندروید، پشتیبانی کامل از کانفیگ‌های WireGuard/AmneziaWG با KeepAlive خودکار.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🌐</div>
-          <div class="cl-content">
-            <h4>پشتیبانی کامل و دوپشته IPv6 + رفع باگ Routing Mode در تنظیمات</h4>
-            <p>مسیریابی کامل تانل IPv6 (tun2socks IPv6 + DNS دوپشته) هنگام روشن بودن گزینه IPv6؛ رفع کامل باگ ذخیره، نمایش و اعمال قوانین Routing Mode (Bypass Iran، Block Ads و Bypass LAN) در هر دو نسخه اندروید و ویندوز.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🚀</div>
-          <div class="cl-content">
-            <h4>ارتقای تست پینگ واقعی (پشتیبانی از IPv6، WireGuard و OpenVPN چندپورتی)</h4>
-            <p>تست تأخیر واقعی End-to-End از طریق هسته در اندروید و پینگ دقیق چندپورتی OpenVPN UDP + بررسی خطای واقعی سوکت TCP + پشتیبانی از آدرس‌های IPv6 بدون پینگ کاذب.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🔋</div>
-          <div class="cl-content">
-            <h4>کاهش شدید مصرف اینترنت در حالت بیکاری (Idle Data Saver)</h4>
-            <p>تشخیص خودکار شبکه Metered در اندروید برای جلوگیری از دانلود پس‌زمینه برنامه‌ها هنگام بیکاری، حذف پینگ‌های مداوم keep-alive، بستن سریع سوکت‌های بیکار (connIdle 45s) و کاهش تایمرهای DNS به ۳ دقیقه.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">📦</div>
-          <div class="cl-content">
-            <h4>پشتیبانی کامل از فرمت کانتینری V2Box (.v2box)</h4>
-            <p>رمزگشایی سخت‌افزاری فایل‌های رمزدار و عادی V2Box با کلید امنیتی اختصاصی و الگوریتم AES-256-GCM؛ ایمپورت مستقیم و اکسپورت حرفه‌ای با سازگاری ۱۰۰٪ با اپلیکیشن V2Box.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🛡️</div>
-          <div class="cl-content">
-            <h4>هسته دکودر وایت‌باکس نپستر (.npvt و .npvs)</h4>
-            <p>مجهز به جداول پیشرفته Whitebox AES-CTR برای خواندن تمامی توکن‌های جدید نپستر، پارس پروتکل‌های VLESS، VMess و Trojan و انتقال خودکار به دسته‌بندی نپسترنت.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🚫</div>
-          <div class="cl-content">
-            <h4>محافظت از تست پینگ هنگام اتصال (بدون پینگ فیک)</h4>
-            <p>بلوکه کردن هوشمند تست پینگ هنگام اتصال به VPN برای جلوگیری از لوپ پروکسی و پینگ غیرواقعی؛ نمایش سرورهای قطع با برچسب قرمز "timeout" بدون داده جعلی.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">⚡</div>
-          <div class="cl-content">
-            <h4>فیلتر و سورت هوشمند سرورها</h4>
-            <p>منوی کشویی مرتب‌سازی بالای صفحه با گزینه‌های «کمترین پینگ (پیش‌فرض)»، «جدیدترین کانفیگ‌ها» و «مرتب‌سازی الفبایی» همراه با حفظ وضعیت انتخاب.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">📋</div>
-          <div class="cl-content">
-            <h4>ایمپورت آنی از کلیپ‌بورد با دکمه شناور (+)</h4>
-            <p>با زدن دکمه شناور، متن کلیپ‌بورد مستقیماً بررسی و بدون نیاز به پیست دستی ایمپورت می‌شود و فوراً تست پینگ خودکار اجرا می‌گردد.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">📤</div>
-          <div class="cl-content">
-            <h4>بازطراحی کامل پنجره اشتراک‌گذاری (Share & Export)</h4>
-            <p>سه حالت مستقل: ۱. کپی کلیپ‌بورد همراه با کیوآرکد وکتور (فرمت URI استاندارد، جیسون سازگار با V2Box/نپستر و لینک نیترو)، ۲. فایل متنی (.txt) در دانلودها، ۳. استخراج فایل کامل با فرمت‌های (.nitro، .npvs، .v2box، .ovpn، .conf).</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">⏳</div>
-          <div class="cl-content">
-            <h4>نمایش هوشمند زمان باقیمانده تا انقضا</h4>
-            <p>محاسبه دقیق مهلت انقضای سرورها و نمایش مستقیم روی کارت کانفیگ به صورت «X روز مانده»، «X ساعت مانده» یا وضعیت «منقضی‌شده».</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🔄</div>
-          <div class="cl-content">
-            <h4>پشتیبانی کامل از لینک ساب starter-m.cloud</h4>
-            <p>پارس بازگشتی Outboundهای تودرتو و استخراج دقیق تمام ۳۲ سرور اشتراک با آپدیت دوره‌ای و تست پینگ سریع اولیه.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">📂</div>
-          <div class="cl-content">
-            <h4>پشتیبانی کامل از نپستر (.npvs و .npvt)</h4>
-            <p>تشخیص هوشمند فایل‌های دارای رمز عبور، ورود آنی و بدون ارور فایل‌های بدون رمز، و دسته‌بندی خودکار در بخش اختصاصی نپستر در هر دو نسخه ویندوز و گوشی.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🟢</div>
-          <div class="cl-content">
-            <h4>اصلاح کامل OpenVPN و WireGuard</h4>
-            <p>حل قطعی مشکل اتصال اوپن‌وی‌پی‌ان و رفع ارور قرمز شدن؛ اتصال پایدار سبز و قابلیت اکسپورت و اشتراک‌گذاری مستقیم به فایل‌های استاندارد <code>.ovpn</code> و <code>.conf</code>.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🎯</div>
-          <div class="cl-content">
-            <h4>تست پینگ واقعی و میلی‌ثانیه‌ای (بدون فیک)</h4>
-            <p>پینگ زنده با مکانیزم چندمسیره و Handshake واقعی TCP با نزدیک‌ترین لوکیشن جغرافیایی؛ نمایش تاخیر کاملاً دقیق و یکسان در گوشی و ویندوز.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🚀</div>
-          <div class="cl-content">
-            <h4>بهبود اساسی مودهای عملکردی (Standard / Turbo)</h4>
-            <p>مود <strong>Standard</strong> با بهینه‌سازی حداکثری مصرف دیتا، مود <strong>Turbo Speed</strong> برای حداکثر پهنای باند، و مود <strong>Turbo Ping</strong> برای کمترین تاخیر گیمینگ با سرعتی هم‌تراز توربو اسپید.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🗂️</div>
-          <div class="cl-content">
-            <h4>مدیریت چندانتخابی (Multi-Select Manager)</h4>
-            <p>امکان انتخاب گروهی کانفیگ‌ها با چک‌باکس، دکمه‌های لغو انتخاب (Cancel)، حذف دسته‌جمعی (Delete)، و اشتراک‌گذاری همزمان چند کانفیگ با یک کلیک.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🔐</div>
-          <div class="cl-content">
-            <h4>امنیت و امکانات پیشرفته اشتراک‌گذاری</h4>
-            <p>تعیین تاریخ و مهلت انقضا برای فایل، قفل کانفیگ (Lock Mode برای جلوگیری از بازنشر)، رمزگذاری با پسورد دلخواه یا تولید رمز رندوم خودکار، و محدودیت انحصاری به اینترنت همراه (Mobile Network Only).</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">📝</div>
-          <div class="cl-content">
-            <h4>پیام و یادداشت اختصاصی زیر نام کانفیگ</h4>
-            <p>امکان درج پیام و توضیحات در فایل اشتراکی؛ متن نوشته‌شده بلافاصله پس از ایمپورت، مستقیماً زیر اسم کانفیگ در صفحه اول با قابلیت اسکرول نمایش داده می‌شود.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">📱</div>
-          <div class="cl-content">
-            <h4>قفل سخت‌افزاری به شناسه دستگاه (Device ID Binding)</h4>
-            <p>امکان وارد کردن شناسه اختصاصی دستگاه مقصد (NTR-XXXX...) در زمان خروجی؛ بدین صورت هیچ شخص یا دستگاه دیگری نمی‌تواند فایل را ایمپورت یا اجرا کند.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🔮</div>
-          <div class="cl-content">
-            <h4>فرمت اختصاصی نیترو (`.nitro` و فرمت متنی)</h4>
-            <p>تبدیل تمام پروتکل‌ها به فرمت اختصاصی با پیشوند <code>nitro://</code>؛ خروجی فایل و متن برای کپی آسان (Copy All)، پشتیبانی از متن در فایل تکست، و تولید/اسکن بارکد تصویری QR Code.</p>
-          </div>
-        </div>
-
-        <div class="cl-item">
-          <div class="cl-icon">🛡️</div>
-          <div class="cl-content">
-            <h4>رفع کامل خطای استارت تونل (`geosite:ir`)</h4>
-            <p>اصلاح ریشه‌ای معماری روتینگ و پاک‌سازی هوشمند Regex؛ تضمین اتصال آنی هسته Xray بدون ارور فیتال <code>geosite:ir EOF</code> در تمامی سیستم‌ها.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════════
-         2. DOWNLOAD SECTION (DIRECTLY UNDERNEATH)
+         2. DOWNLOAD SECTION
          ═══════════════════════════════════════════════════════════ -->
     <section class="download-section" id="downloads">
       <div class="section-header">
-        <div class="section-tag">Direct Downloads • Cloudflare Unfiltered Stream</div>
-        <h3 class="section-title">دریافت نسخه v3.0.1 برای سیستم و گوشی</h3>
+        <div class="section-tag">Direct Downloads • Cloudflare Anycast CDN</div>
+        <h3 class="section-title">دانلود نسخه v3.0.1 برای ویندوز و اندروید</h3>
       </div>
 
       <div class="cards-grid">

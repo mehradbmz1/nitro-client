@@ -1,14 +1,14 @@
-// Cloudflare Pages Function: 100% Direct Cloudflare Edge KV Streaming
+﻿// Cloudflare Pages Function: 100% Direct Cloudflare Edge KV Streaming
 // ZERO GitHub dependency - 100% Hosted and streamed from Cloudflare Edge 24/7
 
 const MANIFEST = {
   "NitroVPN_Setup.exe": {
-    totalSize: 46766080,
+    totalSize: 46749184,
     parts: 5,
     contentType: "application/vnd.microsoft.portable-executable"
   },
   "NitroVPN_Windows.zip": {
-    totalSize: 46685340,
+    totalSize: 46677596,
     parts: 5,
     contentType: "application/zip"
   },
