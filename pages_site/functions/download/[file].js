@@ -3,17 +3,17 @@
 
 const MANIFEST = {
   "NitroVPN_Setup.exe": {
-    totalSize: 46749184,
+    totalSize: 47183872,
     parts: 5,
     contentType: "application/vnd.microsoft.portable-executable"
   },
   "NitroVPN_Windows.zip": {
-    totalSize: 46677596,
+    totalSize: 47112843,
     parts: 5,
     contentType: "application/zip"
   },
   "NitroVPN_Release.apk": {
-    totalSize: 108793668,
+    totalSize: 108800060,
     parts: 11,
     contentType: "application/vnd.android.package-archive"
   }
