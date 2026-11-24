@@ -13,7 +13,7 @@ const MANIFEST = {
     contentType: "application/zip"
   },
   "NitroVPN_Release.apk": {
-    totalSize: 75075485,
+    totalSize: 75076433,
     parts: 8,
     contentType: "application/vnd.android.package-archive"
   }
